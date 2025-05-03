@@ -1,0 +1,60 @@
+const experience = [ {
+    role: 'Research Assistant',
+    organization: 'Endometriosis and Pelvic Pain Laboratory, BC Women’s Hospital and Health Centre',
+    type: "Volunteer",
+    date:'Jan 2025 - Present',
+    location: 'Vancouver, BC',
+    description: 'Updating the EPPIC Data Registry Phase 3 Codebook using Microsoft Excel to streamline variable matching across phases for analysts requesting data from the population database',
+    icon: '...',
+  }, {
+    role: '...',
+    organization: '...',
+    type: "...",
+    date:'...',
+    location: '...',
+    description: '...',
+    icon: '...',
+  }, {
+    role: '...',
+    organization: '...',
+    type: "...",
+    date:'...',
+    location: '...',
+    description: '...',
+    icon: '...',
+  }, {
+    role: '...',
+    organization: '...',
+    type: "...",
+    date:'...',
+    location: '...',
+    description: '...',
+    icon: '...',
+  }, {
+    role: '...',
+    organization: '...',
+    type: "...",
+    date:'...',
+    location: '...',
+    description: '...',
+    icon: '...',
+  }, {
+    role: '...',
+    organization: '...',
+    type: "...",
+    date:'...',
+    location: '...',
+    description: '...',
+    icon: '...',
+  }, {
+    role: '...',
+    organization: '...',
+    type: "...",
+    date:'...',
+    location: '...',
+    description: '...',
+    icon: '...',
+  }
+];
+
+export default experience;

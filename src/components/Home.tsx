@@ -1,6 +1,13 @@
 'use client';
 
 import home from "@/app/resources/home";
+import social from "@/app/resources/social";
+
+const iconMap: Record<string, string> = {
+  github: "🐙",    // Replace with actual icons later if needed
+  linkedin: "💼",
+  email: "✉️",
+};
 
 const HomeSection = () => {
   return (
@@ -23,9 +30,33 @@ const HomeSection = () => {
           <h2 style={{ fontSize: "1.5rem", color: "#555", marginBottom: "1rem" }}>
             {home.title}
           </h2>
-          {/* Placeholder for social buttons */}
-          <div style={{ marginTop: "1rem" }}>
-            {/* Add buttons/icons here later */}
+          {/* Social Buttons */}
+          <div style={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "1rem", flexWrap: "wrap" }}>
+            {social.map((item) => (
+              <a
+                key={item.name}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "10px 16px",
+                  border: "1px solid #ccc",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  color: "#333",
+                  fontSize: "1rem",
+                  width: "fit-content",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#f0f0f0")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "white")}
+              >
+                <span style={{ marginRight: "8px" }}>{iconMap[item.icon]}</span>
+                {item.name}
+              </a>
+            ))}
           </div>
         </div>
 

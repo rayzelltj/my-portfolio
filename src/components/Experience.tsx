@@ -1,10 +1,17 @@
+import experience from "@/app/resources/experience";
+import ExperienceEntry from "./ExperienceEntry";
+
 const Experience = () => {
-    return (
-      <div style={{ padding: "100px 20px", textAlign: "center" }}>
-        <h2>Experience</h2>
-        <p>This is the experience section.</p>
+  return (
+    <section className="bg-red-200 mx-16">
+      <h2 className="text-center">Experience</h2>
+      <div>
+        {experience.map((exp, index) => (
+          <ExperienceEntry key={index} experience={exp} />
+        ))}
       </div>
-    );
-  };
-  
-  export default Experience;
+    </section>
+  );
+};
+
+export default Experience;

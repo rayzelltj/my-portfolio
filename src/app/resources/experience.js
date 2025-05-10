@@ -6,7 +6,7 @@ const experience = [ {
     location: 'Vancouver, BC',
     description: 'Updating the EPPIC Data Registry Phase 3 Codebook using Microsoft Excel to streamline variable matching across phases for analysts requesting data from the population database',
     icon: '/images/whri.png',
-  }
+  },
 ];
 
 export default experience;

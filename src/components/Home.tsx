@@ -4,56 +4,32 @@ import home from "@/app/resources/home";
 import social from "@/app/resources/social";
 
 const iconMap: Record<string, string> = {
-  github: "🐙",    // Replace with actual icons later if needed
+  github: "🐙",
   linkedin: "💼",
   email: "✉️",
 };
 
 const HomeSection = () => {
   return (
-    <section style={{ padding: "100px 20px" }}>
+    <section className="py-24 px-5">
       {/* Top content: Name + Avatar */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "40px",
-          flexWrap: "nowrap", // force side-by-side layout
-          maxWidth: "800px",
-          margin: "0 auto",
-        }}
-      >
-        {/* Left side: name, title, socials placeholder */}
-        <div style={{ minWidth: "300px" }}>
-          <h1 style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>{home.name}</h1>
-          <h2 style={{ fontSize: "1.5rem", color: "#555", marginBottom: "1rem" }}>
-            {home.title}
-          </h2>
+      <div className="flex justify-center items-center gap-10 max-w-3xl mx-auto flex-nowrap flex-col md:flex-row">
+        {/* Left side: name, title, socials */}
+        <div className="min-w-[300px] text-center md:text-left">
+          <h1 className="text-5xl font-bold mb-2">{home.name}</h1>
+          <h2 className="text-2xl text-gray-600 mb-4">{home.title}</h2>
+
           {/* Social Buttons */}
-          <div style={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "1rem", flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-2 justify-center md:justify-start mt-4">
             {social.map((item) => (
               <a
                 key={item.name}
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: "10px 16px",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  color: "#333",
-                  fontSize: "1rem",
-                  width: "fit-content",
-                  transition: "background 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#f0f0f0")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "white")}
+                className="flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-base hover:bg-gray-100 transition-colors"
               >
-                <span style={{ marginRight: "8px" }}>{iconMap[item.icon]}</span>
+                <span className="mr-2">{iconMap[item.icon]}</span>
                 {item.name}
               </a>
             ))}
@@ -61,23 +37,29 @@ const HomeSection = () => {
         </div>
 
         {/* Right side: Avatar */}
-        <div>
+        {/* <div className="flex justify-center">
           <img
             src={home.avatar}
             alt={`${home.name} avatar`}
-            style={{
-              width: "200px",
-              height: "200px",
-              borderRadius: "50%",
-              objectFit: "cover",
-            }}
+            className="w-[200px] h-[200px] rounded-full object-cover"
           />
+        </div> */}
+        <div className="flex justify-center">
+          <div className="relative w-[220px] h-[220px] rounded-full p-[5px] overflow-hidden ring-avatar">
+            <div className="w-full h-full rounded-full overflow-hidden">
+              <img
+                src={home.avatar}
+                alt={`${home.name} avatar`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Bottom: Full-width description */}
-      <div style={{ marginTop: "60px", maxWidth: "800px", marginLeft: "auto", marginRight: "auto" }}>
-        <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "#333" }}>
+      <div className="mt-16 max-w-3xl mx-auto">
+        <p className="text-base leading-relaxed text-gray-800">
           {home.description}
         </p>
       </div>

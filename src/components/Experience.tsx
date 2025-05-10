@@ -3,7 +3,7 @@ import ExperienceEntry from "./ExperienceEntry";
 
 const Experience = () => {
   return (
-    <section className="bg-red-200 mx-16">
+    <section className="mx-24">
       <h2 className="text-center">Experience</h2>
       <div>
         {experience.map((exp, index) => (

@@ -7,7 +7,7 @@ import "./globals.css";
 export default function HomePage() {
   return (
     <main>
-      <section id="home">
+      <section id="home" className="scroll-mt-16">
         <HomeSection />
       </section>
 

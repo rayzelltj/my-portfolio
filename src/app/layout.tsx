@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: 'Rayzell Tjandra | Portfolio',
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Header />
         <main className="min-h-screen px-4 md:px-16 lg:px-32 pt-[4.5rem]">
           {children}
+          <SpeedInsights />
         </main>
         <Footer />
       </body>

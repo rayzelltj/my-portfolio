@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.5",
+    "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.9.4",
     "geist": "^1.4.2",

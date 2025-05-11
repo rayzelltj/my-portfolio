@@ -6,7 +6,40 @@ const experience = [ {
     location: 'Vancouver, BC',
     description: 'Updating the EPPIC Data Registry Phase 3 Codebook using Microsoft Excel to streamline variable matching across phases for analysts requesting data from the population database',
     icon: '/images/whri.png',
+  }, {
+    role: 'Child Life - Emergency Department Volunteer',
+    organization: 'BC Children’s Hospital',
+    type: "Volunteer",
+    date:'Sept 2024 - Present',
+    location: 'Vancouver, BC',
+    description: 'Bringing energy, empathy, and activities to the Emergency Department—I keep children engaged, ease stress for families, and team up with staff to make a tough visit a little brighter.',
+    icon: '/images/bcch.jpg',
+  }, {
+    role: 'Careers & Professional Development Co-Chair',
+    organization: 'UBC Science Undergraduate Society',
+    type: "Volunteer",
+    date:'Sept 2024 - Present',
+    location: 'Vancouver, BC',
+    description: 'Led a 14-person team to run career events like Coffee Chats and the SCI Career Fair for 500+ students—managed 25+ company partnerships, coordinated 50+ professionals, and secured a $500 grant to bring it all to life.',
+    icon: '/images/sus.png',
+  }, {
+    role: 'Barista',
+    organization: 'Waves Coffee House - Broadway',
+    type: "Work",
+    date:'Dec 2023 - Present',
+    location: 'Vancouver, BC',
+    description: 'Serving 150+ customers daily, training new staff, and perfecting my latte art.',
+    icon: '/images/waves.png',
+  }, {
+    role: 'Chemistry and Physics Tutor',
+    organization: 'Self-employed',
+    type: "Work",
+    date:'Dec 2023 - Present',
+    location: 'Remote',
+    description: 'Teaching IB Diploma Programme HL Chemistry and Physics.',
+    icon: '/images/ib.png',
   },
+  
 ];
 
 export default experience;

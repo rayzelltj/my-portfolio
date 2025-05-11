@@ -16,7 +16,7 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body>
+      <body className="bg-grid-radial">
         <Header />
         <main className="min-h-screen px-4 md:px-16 lg:px-32 pt-[4.5rem]">
           {children}

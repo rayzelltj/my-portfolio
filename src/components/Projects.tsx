@@ -11,21 +11,12 @@ interface Project {
   image?: string;
 }
 
+
 const ProjectsSection = () => {
   return (
-    <section style={{ padding: "80px 20px" }}>
-      <h2 style={{ fontSize: "2rem", marginBottom: "2rem", textAlign: "center" }}>
-        Projects
-      </h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "40px",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
+    <section className="py-20 px-6 mx-auto py-24">
+      <h2 className="text-3xl font-semibold mb-8 text-gray-800 text-center">Projects</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-screen-xl mx-auto">
         {projects.map((project: Project, index: number) => (
           <ProjectCard key={index} project={project} />
         ))}

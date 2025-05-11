@@ -16,8 +16,8 @@ const HomeSection = () => {
       <div className="flex justify-center items-center gap-10 max-w-3xl mx-auto flex-nowrap flex-col md:flex-row">
         {/* Left side: name, title, socials */}
         <div className="min-w-[300px] text-center md:text-left">
-          <h1 className="text-5xl font-bold mb-2">{home.name}</h1>
-          <h2 className="text-2xl text-gray-600 mb-4">{home.title}</h2>
+          <h1 className="text-5xl font-bold mb-2">{home.tagline}</h1>
+          <h2 className="text-2xl text-gray-600 mb-4">{home.description}</h2>
 
           {/* Social Buttons */}
           <div className="flex flex-wrap gap-2 justify-center md:justify-start mt-4">
@@ -49,19 +49,12 @@ const HomeSection = () => {
             <div className="w-full h-full rounded-full overflow-hidden">
               <img
                 src={home.avatar}
-                alt={`${home.name} avatar`}
+                alt={`${home.tagline} avatar`}
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom: Full-width description */}
-      <div className="mt-16 max-w-3xl mx-auto">
-        <p className="text-base leading-relaxed text-gray-800">
-          {home.description}
-        </p>
       </div>
     </section>
   );

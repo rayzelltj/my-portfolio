@@ -1,8 +1,6 @@
 const home = {
-    name: "Rayzell Tjandra",
-    title: "Computer Science + Master of Management Student @ UBC",
-    description:
-    "Rayzell is a passionate developer and student focusing on technology and management. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+    tagline: "Code with a Pulse",
+    description: "I'm Rayzell — a CS + MM student building tech that empowers people to feel seen, supported, and stronger.",
     avatar: "/images/avatar.JPG"
 };
 

@@ -3,3 +3,61 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
+
+
+/* .bg-grid-radial {
+    background-image: radial-gradient(
+      circle at center,
+      rgba(173, 216, 255, 0.35) 0%,   
+      rgba(200, 160, 255, 0.15) 40%,   
+      transparent 80%
+    );
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #f9fbff;
+  } */
+
+
+  
+/* .bg-grid-radial {
+    background-image: 
+      radial-gradient(circle at center, rgba(0, 145, 255, 0.439) 0%, transparent 70%);
+    background-position: center, 0 0;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+  }  */
+
+  /* .bg-grid-radial {
+    background-image: 
+      radial-gradient(#ffffff 1px, transparent 0),
+      radial-gradient(circle at center, rgba(0, 145, 255, 0.768) 0%, transparent 70%);
+    background-size: 2px 2px, 100% 100%;
+    background-position: 0 0, center;
+    background-attachment: fixed; 
+    background-repeat: repeat, no-repeat;
+  } */
+
+  
+  .bg-grid-radial {
+    background-image: 
+      radial-gradient(circle at center,
+        rgba(173, 216, 255, 0.35) 0%,
+        rgba(200, 160, 255, 0.15) 40%,
+        transparent 80%
+      ),
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+      url('https://www.transparenttextures.com/patterns/noise.png'); /* optional noise texture */
+    
+    background-size: 
+      cover,        /* radial gradient */
+      40px 40px,    /* horizontal grid */
+      40px 40px,    /* vertical grid */
+      auto;         /* noise texture */
+    
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: repeat, repeat, repeat, repeat;
+    background-color: #f9fbff;
+  }

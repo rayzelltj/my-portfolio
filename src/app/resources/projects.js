@@ -15,6 +15,14 @@ const projects = [ {
     devpost: 'https://devpost.com/software/medlex',
     image: '/images/medlex.png',
   }, {
+    title: 'Online Coffee Order Manager (CPSC 210)',
+    description: 'A desktop application that streamlines online coffee ordering by enabling customers to manage orders, view sales history, and store customer data through a user-friendly Swing-based interface.',
+    technologies: ["Java"],
+    category: "Course Project",
+    github: 'https://github.com/rayzelltj/online-ordering-software-project',
+    devpost: '',
+    image: '/images/cpsc210.png',
+  }, {
     title: 'Pulsar Star Classification Model (DSCI 100)',
     description: 'A machine learning model utilizing K-NN classification to accurately identify pulsar stars with 97.6% precision using the HTRU2 dataset.',
     technologies: ["Python", "pandas", "scikit-learn", "NumPy", "Matplotlib", "Altair"],

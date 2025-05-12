@@ -4,36 +4,35 @@ import { useEffect, useState } from "react";
 import { Home, User, Briefcase, Folder } from "lucide-react";
 
 const navItems = [
-  { label: "Home", href: "#home", icon: Home},
+  { label: "Home", href: "#home", icon: Home },
   { label: "About", href: "#about", icon: User },
-  { label: "Experience", href: "#experience", icon: Briefcase},
-  { label: "Projects", href: "#projects", icon: Folder},
+  { label: "Experience", href: "#experience", icon: Briefcase },
+  { label: "Projects", href: "#projects", icon: Folder },
 ];
 
 const Header = () => {
-  const [activeId, setActiveId] = useState<string>("home");
+  const [activeId, setActiveId] = useState("home");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSection = entries.find((entry) => entry.isIntersecting);
-        if (visibleSection?.target.id) {
-          setActiveId(visibleSection.target.id);
-        }
-      },
-      {
-        threshold: 0.6,
-      }
-    );
+    const handleScroll = () => {
+      const sectionOffsets = navItems.map((item) => {
+        const el = document.getElementById(item.href.slice(1));
+        if (!el) return { id: item.href.slice(1), top: Infinity };
+        const rect = el.getBoundingClientRect();
+        return { id: el.id, top: Math.abs(rect.top) };
+      });
 
-    const sectionIds = navItems.map((item) => item.href.replace("#", ""));
-    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+      const closest = sectionOffsets.reduce((a, b) =>
+        a.top < b.top ? a : b
+      );
 
-    sections.forEach((section) => observer.observe(section!));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section!));
+      setActiveId(closest.id);
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // initialize on mount
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -41,8 +40,7 @@ const Header = () => {
       <nav className="backdrop-blur-md bg-white/30 border border-white/40 shadow-lg rounded-full px-8 py-2">
         <ul className="flex space-x-8 text-sm font-medium text-black">
           {navItems.map((item) => {
-            const targetId = item.href.replace("#", "");
-            const isActive = activeId === targetId;
+            const isActive = activeId === item.href.slice(1);
             return (
               <li key={item.href}>
                 <a

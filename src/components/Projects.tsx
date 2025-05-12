@@ -12,7 +12,7 @@ interface Project {
 }
 
 
-const ProjectsSection = () => {
+const Projects = () => {
   return (
     <section className="py-20 px-6 mx-auto py-24">
       <h2 className="text-3xl font-semibold mb-8 text-gray-800 text-center">Projects</h2>
@@ -25,4 +25,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection;
+export default Projects;

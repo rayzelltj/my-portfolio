@@ -11,15 +11,15 @@ export default function HomePage() {
         <HomeSection />
       </section>
 
-      <section id="about">
+      <section id="about" className="min-h-screen">
         <About />
       </section>
 
-      <section id="experience">
+      <section id="experience" className="min-h-screen">
         <Experience />
       </section>
 
-      <section id="projects">
+      <section id="projects" className="min-h-screen">
         <Projects />
       </section>
     </main>

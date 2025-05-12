@@ -1,4 +1,12 @@
 const experience = [ {
+    role: 'Admin Subteam Member',
+    organization: 'UBC iGEM',
+    type: "Volunteer",
+    date:'Feb 2025 - Present',
+    location: 'Vancouver, BC',
+    description: '',
+    icon: '/images/igem.svg',
+  }, {
     role: 'Research Assistant',
     organization: 'Endometriosis and Pelvic Pain Laboratory, BC Women’s Hospital and Health Centre',
     type: "Volunteer",
@@ -38,6 +46,14 @@ const experience = [ {
     location: 'Remote',
     description: 'Teaching IB Diploma Programme HL Chemistry and Physics.',
     icon: '/images/ib.png',
+  }, {
+    role: 'Co-fouder & Lead Teacher',
+    organization: 'KitaSehat Foundation',
+    type: "Volunteer",
+    date:'Sept 2021 - Jul 2022',
+    location: 'Tangerang Selatan, Banten',
+    description: 'Led a team of 4 to deliver mental and physical health education to 12 underprivileged children (ages 7-15) from Bulakan Shanty Village, Indonesia.',
+    icon: '/images/kitasehat.png',
   },
   
 ];

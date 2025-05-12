@@ -26,7 +26,7 @@ const experience = [ {
     role: 'Careers & Professional Development Co-Chair',
     organization: 'UBC Science Undergraduate Society',
     type: "Volunteer",
-    date:'Sept 2024 - Present',
+    date:'Sept 2024 - April 2025',
     location: 'Vancouver, BC',
     description: 'Led a 14-person team to run career events like Coffee Chats and the SCI Career Fair for 500+ students—managed 25+ company partnerships, coordinated 50+ professionals, and secured a $500 grant to bring it all to life.',
     icon: '/images/sus.png',

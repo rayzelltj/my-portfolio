@@ -1,12 +1,4 @@
-const experience = [ {
-    role: 'Admin Subteam Member',
-    organization: 'UBC iGEM',
-    type: "Volunteer",
-    date:'Feb 2025 - Present',
-    location: 'Vancouver, BC',
-    description: '',
-    icon: '/images/igem.svg',
-  }, {
+const experience = [{
     role: 'Research Assistant',
     organization: 'Endometriosis and Pelvic Pain Laboratory, BC Women’s Hospital and Health Centre',
     type: "Volunteer",

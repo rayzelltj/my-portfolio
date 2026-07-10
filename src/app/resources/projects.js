@@ -1,4 +1,18 @@
 const projects = [ {
+    title: 'MER Review Agent — Production AI Agent',
+    description: 'A production AI agent that automates month-end balance-sheet reviews for a 270+-client accounting firm. Combines a tool-calling LLM agent, a deterministic 36-rule validation engine, and a multi-extractor document pipeline (Azure Document Intelligence + LLM/vision) to cut per-client review from hours to minutes. Built solo during my Optimus co-op.',
+    technologies: ["Python", "FastAPI", "Azure OpenAI", "Microsoft Agent Framework", "React", "TypeScript"],
+    category: "Professional",
+    github: '',
+    caseStudy: '/work/mer-agent',
+  }, {
+    title: 'cafe-manager — Canadian Payroll Engine',
+    description: 'A CRA-compliant payroll engine in Java that computes CPP, EI, and federal/BC income tax with BigDecimal precision — validated to the cent against the CRA PDOC reference across 8 pay periods and 7 deduction types. Built to replace a ~$200/mo payroll service for a local cafe.',
+    technologies: ["Java", "Gradle", "SQLite", "JUnit"],
+    category: "Personal",
+    github: 'https://github.com/rayzelltj/cafe-manager',
+    devpost: '',
+  }, {
     title: 'BrainJack! (nwHacks 2025)',
     description: 'A web application that combines the excitement of blackjack with educational quizzes, allowing players to reinforce study material through strategic risk and reward.',
     technologies: [ "JavaScript", "HTML/CSS", "MongoDB"],

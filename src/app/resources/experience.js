@@ -1,4 +1,12 @@
 const experience = [{
+    role: 'Software Engineer, Co-op',
+    organization: 'Optimus Information Inc.',
+    type: "Work",
+    date: 'Jan 2026 - Aug 2026',
+    location: 'Vancouver, BC',
+    description: 'Architected and solely shipped a production AI agent (Azure, Microsoft Agent Framework, Azure OpenAI) that automates month-end balance-sheet reviews for a 270+-client accounting firm — cutting per-client review ~90% (hours to minutes), now used by 14 accountants. Built a deterministic 36-rule validation engine, a multi-extractor document pipeline (Azure Document Intelligence + LLM/vision), and shipped ~50 production fixes including a subtle OAuth token-refresh defect.',
+    icon: '/images/optimus.png',
+  }, {
     role: 'Research Assistant',
     organization: 'Endometriosis and Pelvic Pain Laboratory, BC Women’s Hospital and Health Centre',
     type: "Volunteer",

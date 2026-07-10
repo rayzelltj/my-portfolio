@@ -1,11 +1,11 @@
 const about = {
     name: "Rayzell Tjandra",
     description: [
-      "Hi! I’m Rayzell, a second-year Computer Science and Master of Management student at UBC with a passion for creating real, tangible impact through technology. Whether it's designing smarter systems or finding new ways to connect people and ideas, I believe meaningful innovation starts with empathy.",
-      "While I enjoy coding and creating, I care just as much about why I build — to make systems more supportive, more accessible, and more human.",
-      "Outside of school, I play guitar in a rock band, volunteer in pediatric care, and am on an endless quest to master latte art (still very much a work-in-progress).",
-      "I’m currently looking for co-op opportunities where I can merge my technical skills with my passion for people and real-world impact."
+      "Hi! I'm Rayzell — a Computer Science and Master of Management (dual degree) student at UBC who builds production AI agents and systems that ship and help people. I care most about work with real, measurable impact.",
+      "Right now I'm a Software Engineering co-op at Optimus Information, where I architected and solely shipped a production AI agent that automates month-end accounting reviews for a 270+-client firm — cutting a multi-hour manual process down to minutes, now used by 14 accountants.",
+      "I'm drawn to AI agents, backend systems, and building things that actually reach and help users. I like turning messy, high-stakes problems into reliable software that makes a real difference.",
+      "Outside of building, I play guitar in a rock band and am on an endless quest to master latte art (still very much a work-in-progress). I'm currently looking for software engineering and AI internships for 2027."
     ]
   };
-  
+
   export default about;

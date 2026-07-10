@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { Home, User, Briefcase, Folder } from "lucide-react";
 
 const navItems = [
-  { label: "Home", href: "#home", icon: Home },
-  { label: "About", href: "#about", icon: User },
-  { label: "Experience", href: "#experience", icon: Briefcase },
-  { label: "Projects", href: "#projects", icon: Folder },
+  { label: "Home", id: "home", href: "/#home", icon: Home },
+  { label: "About", id: "about", href: "/#about", icon: User },
+  { label: "Experience", id: "experience", href: "/#experience", icon: Briefcase },
+  { label: "Projects", id: "projects", href: "/#projects", icon: Folder },
 ];
 
 const Header = () => {
@@ -16,8 +16,8 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sectionOffsets = navItems.map((item) => {
-        const el = document.getElementById(item.href.slice(1));
-        if (!el) return { id: item.href.slice(1), top: Infinity };
+        const el = document.getElementById(item.id);
+        if (!el) return { id: item.id, top: Infinity };
         const rect = el.getBoundingClientRect();
         return { id: el.id, top: Math.abs(rect.top) };
       });
@@ -36,20 +36,28 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-      <nav className="backdrop-blur-md bg-white/30 border border-white/40 shadow-lg rounded-full px-8 py-2">
-        <ul className="flex space-x-8 text-sm font-medium text-black">
+    <header className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-auto">
+      <nav className="backdrop-blur-md bg-surface/70 border border-subtle shadow-lg shadow-black/5 rounded-full px-4 sm:px-8 py-2">
+        <ul className="flex justify-between sm:justify-start gap-4 sm:gap-8 text-sm font-medium text-muted">
           {navItems.map((item) => {
-            const isActive = activeId === item.href.slice(1);
+            const isActive = activeId === item.id;
             return (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className={`transition-colors ${
-                    isActive ? "text-indigo-600 font-semibold" : "hover:text-indigo-600"
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative transition-colors duration-200 ${
+                    isActive
+                      ? "text-accent font-semibold"
+                      : "hover:text-fg"
                   }`}
                 >
                   {item.label}
+                  <span
+                    className={`absolute -bottom-1.5 left-0 h-px w-full bg-accent transition-transform duration-300 origin-left ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
                 </a>
               </li>
             );

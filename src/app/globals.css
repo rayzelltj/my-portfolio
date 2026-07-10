@@ -4,60 +4,146 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 
+/* ------------------------------------------------------------------ *
+ * Design tokens — dark, engineering-forward theme
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces & text — warm light */
+  --color-bg: #faf9f6;
+  --color-bg-alt: #f2f1ec;
+  --color-surface: #ffffff;
+  --color-surface-hover: #fbfaf7;
+  --color-fg: #1a1a1e;
+  --color-muted: #57575f;
 
-/* .bg-grid-radial {
-    background-image: radial-gradient(
-      circle at center,
-      rgba(173, 216, 255, 0.35) 0%,   
-      rgba(200, 160, 255, 0.15) 40%,   
-      transparent 80%
-    );
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-color: #f9fbff;
-  } */
+  /* One bold accent — electric indigo (the blue you love) */
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+  --color-accent-soft: rgba(99, 102, 241, 0.1);
 
+  /* Borders */
+  --color-subtle: #e7e4dd;
 
-  
-/* .bg-grid-radial {
-    background-image: 
-      radial-gradient(circle at center, rgba(0, 145, 255, 0.439) 0%, transparent 70%);
-    background-position: center, 0 0;
-    background-attachment: fixed; 
-    background-repeat: no-repeat;
-  }  */
+  /* Fonts: Inter (body) · Geist Sans (headings) · Geist Mono (accents) */
+  --font-sans: "Inter", var(--font-geist-sans), system-ui, sans-serif;
+  --font-heading: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+}
 
-  /* .bg-grid-radial {
-    background-image: 
-      radial-gradient(#ffffff 1px, transparent 0),
-      radial-gradient(circle at center, rgba(0, 145, 255, 0.768) 0%, transparent 70%);
-    background-size: 2px 2px, 100% 100%;
-    background-position: 0 0, center;
-    background-attachment: fixed; 
-    background-repeat: repeat, no-repeat;
-  } */
-
-  
-  .bg-grid-radial {
-    background-image: 
-      radial-gradient(circle at center,
-        rgba(173, 216, 255, 0.35) 0%,
-        rgba(200, 160, 255, 0.15) 40%,
-        transparent 80%
-      ),
-      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-      url('https://www.transparenttextures.com/patterns/noise.png'); /* optional noise texture */
-    
-    background-size: 
-      cover,        /* radial gradient */
-      40px 40px,    /* horizontal grid */
-      40px 40px,    /* vertical grid */
-      auto;         /* noise texture */
-    
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: repeat, repeat, repeat, repeat;
-    background-color: #f9fbff;
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
   }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-fg);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Background: near-black with a faint accent radial glow + subtle grid
+ * ------------------------------------------------------------------ */
+.bg-grid-radial {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(99, 102, 241, 0.1) 0%,
+      rgba(99, 102, 241, 0.035) 30%,
+      transparent 60%
+    ),
+    linear-gradient(rgba(20, 20, 30, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 20, 30, 0.035) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    44px 44px,
+    44px 44px;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat, repeat, repeat;
+}
+
+/* ------------------------------------------------------------------ *
+ * Utilities / components
+ * ------------------------------------------------------------------ */
+
+/* Accent glow ring behind the hero avatar */
+.ring-avatar {
+  background: linear-gradient(135deg, var(--color-accent), #22d3ee);
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.4),
+    0 0 44px rgba(99, 102, 241, 0.35);
+}
+
+/* Hide scrollbars on horizontally-scrolling tag rows */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gradient-shimmer for the hero tagline */
+.shimmer-text {
+  background: linear-gradient(
+    100deg,
+    var(--color-fg) 0%,
+    var(--color-fg) 35%,
+    var(--color-accent-hover) 50%,
+    var(--color-fg) 65%,
+    var(--color-fg) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text {
+    animation: none;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    color: var(--color-fg);
+  }
+}

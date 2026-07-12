@@ -17,9 +17,9 @@ interface Project {
 // Impact metrics for the MER Review Agent (see PORTFOLIO_BRIEF.md §5/§7)
 const metrics = [
   { value: "~90%", label: "Faster review" },
-  { value: "14", label: "Accountants" },
+  { value: "16", label: "Accountants" },
   { value: "270+", label: "Clients" },
-  { value: "5.56% → 0%", label: "False positives" },
+  { value: "94% → ~1%", label: "Redundant OAuth calls" },
 ];
 
 const FeaturedProject = ({ project }: { project: Project }) => {

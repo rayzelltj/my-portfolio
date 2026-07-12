@@ -17,7 +17,7 @@ const container = {
 const stats = [
   { value: '~90%', label: 'Faster per-client review' },
   { value: '3–4h → 10–20m', label: 'Time per client' },
-  { value: '14', label: 'Accountants using it' },
+  { value: '16', label: 'Accountants using it' },
   { value: '270+', label: 'Clients served' },
 ];
 
@@ -26,37 +26,71 @@ const decisions = [
     n: '01',
     title: 'Deterministic rule logic, not "let the LLM decide."',
     body: [
-      'Each of the 36 balance-sheet / P&L checks is a pure, side-effect-free function: the same RuleContext in, the same PASS / FAIL / WARN out, with cited evidence. The LLM is used upstream to extract and match evidence from documents (deterministic-first, with an LLM-fallback matcher), but the verdict is always computed by deterministic code — and when a value came from the LLM-fallback path, the rule tags it so a reviewer knows.',
+      'Each of the 34 balance-sheet / P&L checks is a pure, side-effect-free function: the same RuleContext in, the same PASS / FAIL / WARN out, with cited evidence. Requirements were often ambiguous, so the rules were shaped through a twice-weekly feedback loop with the firm\'s staff accountants and translated into deterministic logic — not left to an LLM to interpret at runtime. The LLM is used upstream to extract and match evidence from documents, but the verdict is always computed by deterministic code.',
     ],
     why: 'Financial review must be reproducible and auditable; an accountant has to trace exactly why a rule fired.',
     tradeoff: 'More upfront engineering per rule, in exchange for trust and testability.',
   },
   {
     n: '02',
-    title: 'A multi-extractor pipeline with a reconciliation firewall.',
+    title: 'A multi-extractor evidence pipeline, grounded and reproducible.',
     body: [
-      'Documents (bank statements, working papers) are parsed by Azure Document Intelligence as the primary extractor, then cross-checked against an LLM + vision cascade. A firewall reconciles them: accept on agreement, fall back on low confidence, and flag genuine disagreements for human review instead of silently guessing.',
+      'Documents are parsed by a primary extractor, then cross-checked against a vision-language corroboration pass. Extracted values are tied back to real evidence in the source documents before a rule can rely on them — the agent surfaces "couldn\'t find support for X" rather than inventing a plausible number. The cascade caught real extraction errors, including a $10K digit-drop misread, and routed unresolved mismatches to human review instead of guessing.',
     ],
-    why: 'A single extractor fails silently on messy real-world PDFs; cross-validation turns silent errors into visible flags.',
-    tradeoff: 'This drove document-matching false positives from 5.56% to 0%.',
+    why: 'In finance, a confident wrong answer is worse than an honest "needs review" — and a single extractor fails silently on messy real-world documents.',
+    tradeoff: 'Made reproducible — byte-identical verdicts across runs — by seeding every model call and pinning temperature to 0.',
     tradeoffLabel: 'Result',
   },
   {
     n: '03',
-    title: 'Grounding / hallucination guarding.',
+    title: 'Single-flight admission control for a flaky pipeline.',
     body: [
-      'Extracted values are tied back to real evidence in the source documents before a rule can rely on them, so the agent surfaces "couldn\'t find support for X" rather than inventing a plausible number.',
+      'Duplicate review runs and silent 90-second-to-5-minute pipeline hangs were slipping through undetected. Added request de-duplication and a concurrency cap so only one run can be in flight per client, plus a heartbeat watchdog that detects stalls and automatically recovers stuck jobs.',
     ],
-    why: 'In finance, a confident wrong answer is worse than an honest "needs review."',
+    why: 'A finance tool that silently hangs or double-runs erodes trust fast — accountants need to know a review either completed or is visibly still running, never stuck in between.',
+    tradeoff: 'Eliminated duplicate runs and made pipeline stalls self-healing instead of requiring a manual restart.',
+    tradeoffLabel: 'Result',
+  },
+  {
+    n: '04',
+    title: 'A token-refresh bug hiding in plain sight.',
+    body: [
+      'Telemetry showed the QuickBooks Online (QBO) OAuth flow was refreshing tokens on 94% of API calls (10,770 of 11,410 in a single day) — nearly every request, instead of once per token lifetime. Fixed with a run-scoped token cache and a per-realm lock.',
+    ],
+    why: 'Invisible without tracing — the pipeline worked, so nothing looked broken. But it was one bad day away from tripping Intuit\'s rate limits and taking down every client\'s review at once.',
+    tradeoff: 'Cut redundant refreshes from 94% to ~1% of calls and removed the rate-limit risk entirely.',
+    tradeoffLabel: 'Result',
+  },
+  {
+    n: '05',
+    title: 'Diagnosing a slow, invisible cost leak.',
+    body: [
+      'Production Azure costs kept climbing without a clear reason. Traced it to 30+ idle Container App revisions running 24/7 — leftover copies from deploys that were never cleaned up — plus a deployment flaw that risked duplicate processing of the same review.',
+    ],
+    why: 'Cost leaks like this compound silently for months; nobody notices until the bill does.',
+    tradeoff: 'Cut production Azure costs ~36% (~CA$435/mo) and closed the duplicate-processing risk in the same fix.',
+    tradeoffLabel: 'Result',
   },
 ];
 
 const techStack = [
   'Python',
   'FastAPI',
+  'Pydantic',
   'Azure OpenAI',
   'Microsoft Agent Framework',
+  'Vision-Language Models',
   'Azure Document Intelligence',
+  'Azure Container Apps',
+  'Azure Container Registry',
+  'Docker',
+  'Cosmos DB',
+  'Azure Blob Storage',
+  'Azure Key Vault',
+  'Microsoft Entra ID',
+  'Azure Application Insights',
+  'OpenTelemetry',
+  'pytest',
   'React',
   'TypeScript',
 ];
@@ -123,8 +157,8 @@ export default function CaseStudy() {
           A production AI agent that automates the month-end balance-sheet review
           accountants do for each client — reconciling the books against dozens of
           rules and supporting documents. It cut per-client review from 3–4 hours to
-          10–20 minutes and is used by 14 accountants across a 270+-client Canadian
-          accounting firm. Built solo during an 8-month co-op.
+          10–20 minutes and is used daily by 16 accountants across a 270+-client
+          Canadian accounting firm. Built solo during an 8-month co-op.
         </motion.p>
       </Section>
 
@@ -182,7 +216,7 @@ export default function CaseStudy() {
       <Section className="mt-20">
         <SectionLabel>Design decisions</SectionLabel>
         <motion.h2 variants={fadeUp} className="text-2xl font-semibold mb-8 text-fg">
-          Three decisions worth explaining
+          Decisions worth explaining
         </motion.h2>
 
         <div className="flex flex-col gap-5">
@@ -235,14 +269,13 @@ export default function CaseStudy() {
         <motion.p variants={fadeUp} className="text-lg text-muted leading-relaxed mb-4">
           Validated against a ground-truth suite of real (anonymized) client datasets
           with a{' '}
-          <span className="font-mono text-fg">300+</span>-test suite and per-rule cases.
+          <span className="font-mono text-fg">6,000+</span>-test suite and per-rule cases.
         </motion.p>
         <motion.p variants={fadeUp} className="text-lg text-muted leading-relaxed">
-          One representative debugging win: diagnosed from telemetry that an OAuth flow
-          was refreshing tokens on{' '}
-          <span className="font-mono text-fg">~94%</span> of API calls, and fixed it to
-          roughly once per token lifetime — a subtle efficiency / reliability bug
-          invisible without tracing.
+          A shadow-comparator harness re-runs every rule change against the full
+          benchmark fleet before it ships —{' '}
+          <span className="font-mono text-fg">30+</span> rule changes have gone out
+          with zero false-PASS regressions.
         </motion.p>
       </Section>
 

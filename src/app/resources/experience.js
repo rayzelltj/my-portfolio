@@ -4,7 +4,7 @@ const experience = [{
     type: "Work",
     date: 'Jan 2026 - Aug 2026',
     location: 'Vancouver, BC',
-    description: 'Architected and solely shipped a production AI agent (Azure, Microsoft Agent Framework, Azure OpenAI) that automates month-end balance-sheet reviews for a 270+-client accounting firm — cutting per-client review ~90% (hours to minutes), now used by 14 accountants. Built a deterministic 36-rule validation engine, a multi-extractor document pipeline (Azure Document Intelligence + LLM/vision), and shipped ~50 production fixes including a subtle OAuth token-refresh defect.',
+    description: 'Architected and solely shipped a production AI agent (Azure Container Apps, Cosmos DB, Azure OpenAI, Microsoft Agent Framework, Azure Document Intelligence) that cut a 270+-client accounting firm\'s month-end review from 3–4 hours to 10–20 minutes (~90%), now used daily by 16 staff accountants. Built a deterministic 34-rule balance-sheet/P&L engine validated against a 6,000+ test suite, fixed a subtle OAuth defect cutting redundant token refreshes from 94% to ~1%, and cut production cloud costs ~36% by eliminating leaked idle infrastructure. Also root-caused a duplicate-record bug in a legacy CRM sync system, disproving an inflated failure-rate claim and avoiding an unnecessary rebuild.',
     icon: '/images/optimus.png',
   }, {
     role: 'Research Assistant',

@@ -1,27 +1,12 @@
-import HomeSection from "@/components/Home";
-import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import "./globals.css";
+import HomePage from '@/components/home/HomePage';
+import { Syne } from 'next/font/google';
 
-export default function HomePage() {
+const syne = Syne({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-display' });
+
+export default function Page() {
   return (
-    <main>
-      <section id="home" className="scroll-mt-16">
-        <HomeSection />
-      </section>
-
-      <section id="about" className="min-h-screen">
-        <About />
-      </section>
-
-      <section id="experience" className="min-h-screen">
-        <Experience />
-      </section>
-
-      <section id="projects" className="min-h-screen">
-        <Projects />
-      </section>
-    </main>
+    <div className={syne.variable}>
+      <HomePage />
+    </div>
   );
 }

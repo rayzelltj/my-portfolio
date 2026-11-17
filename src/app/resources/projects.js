@@ -1,6 +1,6 @@
 const projects = [ {
-    title: 'MER Review Agent — Production AI Agent',
-    description: 'A production AI agent that automates month-end balance-sheet reviews for a 270+-client accounting firm. Combines a tool-calling LLM agent, a deterministic 34-rule validation engine, and a multi-extractor document pipeline (Azure Document Intelligence + LLM/vision) to cut per-client review from hours to minutes. Built solo during my Optimus co-op.',
+    title: 'MERvin — Month-End Review Agent',
+    description: 'A production AI agent that automates month-end balance-sheet reviews for an accounting firm with 270+ client companies, used by 48 accountants. The AI reads the documents and deterministic code decides: 30+ rule checks, a multi-extractor document pipeline (Azure Document Intelligence + LLM/vision), and a no-false-pass gate cut each review from 3–4 hours to 20–30 minutes. Built solo during my Optimus co-op.',
     technologies: ["Python", "FastAPI", "Pydantic", "Azure OpenAI", "Microsoft Agent Framework", "Vision-Language Models", "Azure Document Intelligence", "Azure Container Apps", "Azure Container Registry", "Docker", "Cosmos DB", "Azure Blob Storage", "Azure Key Vault", "Microsoft Entra ID", "Azure Application Insights", "OpenTelemetry", "pytest", "React", "TypeScript"],
     category: "Professional",
     github: '',

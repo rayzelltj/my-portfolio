@@ -4,7 +4,7 @@ const experience = [{
     type: "Work",
     date: 'Jan 2026 - Aug 2026',
     location: 'Vancouver, BC',
-    description: 'Architected and solely shipped a production AI agent (Azure Container Apps, Cosmos DB, Azure OpenAI, Microsoft Agent Framework, Azure Document Intelligence) that cut a 270+-client accounting firm\'s month-end review from 3–4 hours to 10–20 minutes (~90%), now used daily by 16 staff accountants. Built a deterministic 34-rule balance-sheet/P&L engine validated against a 6,000+ test suite, fixed a subtle OAuth defect cutting redundant token refreshes from 94% to ~1%, and cut production cloud costs ~36% by eliminating leaked idle infrastructure. Also root-caused a duplicate-record bug in a legacy CRM sync system, disproving an inflated failure-rate claim and avoiding an unnecessary rebuild.',
+    description: 'Architected and solely shipped a production AI agent (Azure Container Apps, Cosmos DB, Azure OpenAI, Microsoft Agent Framework, Azure Document Intelligence) that cut a 270+-client accounting firm\'s month-end review from 3–4 hours to 20–30 minutes, freeing ~900 accountant hours a month across ~300 reviews; now used by 48 accountants. Built a deterministic balance-sheet/P&L rules engine (30+ checks) with a shadow comparator and a 6,000+ test suite, shipping 30+ rule changes with zero false passes, fixed a subtle OAuth defect cutting redundant token refreshes from 94% to ~1%, and cut production cloud costs ~36% by eliminating leaked idle infrastructure. Also root-caused a duplicate-record bug in a legacy CRM sync system, disproving an inflated failure-rate claim and avoiding an unnecessary rebuild.',
     icon: '/images/optimus.png',
   }, {
     role: 'Research Assistant',

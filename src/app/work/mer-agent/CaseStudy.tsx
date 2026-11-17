@@ -15,10 +15,10 @@ const container = {
 };
 
 const stats = [
-  { value: '~90%', label: 'Faster per-client review' },
-  { value: '3–4h → 10–20m', label: 'Time per client' },
-  { value: '16', label: 'Accountants using it' },
-  { value: '270+', label: 'Clients served' },
+  { value: '3–4h → 20–30m', label: 'Time per review' },
+  { value: '~900 h', label: 'Accountant time freed each month' },
+  { value: '48', label: 'Accountants using it' },
+  { value: '270+', label: 'Client companies' },
 ];
 
 const decisions = [
@@ -26,7 +26,7 @@ const decisions = [
     n: '01',
     title: 'Deterministic rule logic, not "let the LLM decide."',
     body: [
-      'Each of the 34 balance-sheet / P&L checks is a pure, side-effect-free function: the same RuleContext in, the same PASS / FAIL / WARN out, with cited evidence. Requirements were often ambiguous, so the rules were shaped through a twice-weekly feedback loop with the firm\'s staff accountants and translated into deterministic logic — not left to an LLM to interpret at runtime. The LLM is used upstream to extract and match evidence from documents, but the verdict is always computed by deterministic code.',
+      'Each of the 30+ balance-sheet / P&L checks is a pure, side-effect-free function: the same RuleContext in, the same PASS / FAIL / WARN out, with cited evidence. Requirements were often ambiguous, so the rules were shaped through a twice-weekly feedback loop with the firm\'s staff accountants and translated into deterministic logic — not left to an LLM to interpret at runtime. The LLM is used upstream to extract and match evidence from documents, but the verdict is always computed by deterministic code.',
     ],
     why: 'Financial review must be reproducible and auditable; an accountant has to trace exactly why a rule fired.',
     tradeoff: 'More upfront engineering per rule, in exchange for trust and testability.',
@@ -132,7 +132,7 @@ export default function CaseStudy() {
       {/* Back link */}
       <div className="max-w-3xl mx-auto mb-10">
         <Link
-          href="/#projects"
+          href="/#work"
           prefetch={false}
           className="inline-flex items-center gap-2 font-mono text-xs text-muted hover:text-accent transition-colors"
         >
@@ -148,7 +148,7 @@ export default function CaseStudy() {
           variants={fadeUp}
           className="text-4xl sm:text-5xl font-bold leading-tight mb-6"
         >
-          MER Review Agent
+          MERvin: Month-End Review Agent
         </motion.h1>
         <motion.p
           variants={fadeUp}
@@ -156,9 +156,10 @@ export default function CaseStudy() {
         >
           A production AI agent that automates the month-end balance-sheet review
           accountants do for each client — reconciling the books against dozens of
-          rules and supporting documents. It cut per-client review from 3–4 hours to
-          10–20 minutes and is used daily by 16 accountants across a 270+-client
-          Canadian accounting firm. Built solo during an 8-month co-op.
+          rules and supporting documents. It cut each review from 3–4 hours to
+          20–30 minutes, freeing roughly 900 accountant hours a month, and is used by
+          48 accountants across a Canadian firm with 270+ client companies. Built solo
+          during an 8-month co-op.
         </motion.p>
       </Section>
 

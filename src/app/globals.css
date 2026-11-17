@@ -147,3 +147,27 @@
     color: var(--color-fg);
   }
 }
+
+/* ------------------------------------------------------------------ *
+ * Full-bleed pages (homepage, /lab) that bring their own nav and footer
+ * ------------------------------------------------------------------ */
+body:has(.lab-root, .immersive) > header,
+body:has(.lab-root, .immersive) > footer {
+  display: none;
+}
+body:has(.lab-root, .immersive) > main {
+  padding: 0;
+}
+body:has(.immersive) {
+  background: #040b1c;
+}
+html:has(.lab-root, .immersive) {
+  scroll-behavior: auto;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}

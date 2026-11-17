@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { Home, User, Briefcase, Folder } from "lucide-react";
 
 const navItems = [
-  { label: "Home", id: "home", href: "/#home", icon: Home },
+  { label: "Home", id: "home", href: "/", icon: Home },
   { label: "About", id: "about", href: "/#about", icon: User },
   { label: "Experience", id: "experience", href: "/#experience", icon: Briefcase },
-  { label: "Projects", id: "projects", href: "/#projects", icon: Folder },
+  { label: "Projects", id: "projects", href: "/#work", icon: Folder },
 ];
 
 const Header = () => {

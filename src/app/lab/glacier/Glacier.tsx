@@ -163,7 +163,7 @@ export default function Glacier() {
             </div>
           </div>
           <p ref={caption} className={s.caption}>
-            With MERvin, the agent I built as sole engineer at Optimus. About 300 reviews a month for 48 accountants,
+            With MERvin, the agent I built as sole engineer at Optimus. About 300 reviews a month for 46 accountants,
             freeing roughly 900 hours.
           </p>
         </div>

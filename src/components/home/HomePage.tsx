@@ -16,19 +16,36 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const Field = dynamic(() => import('./Field'), { ssr: false });
 const PortraitDissolve = dynamic(() => import('./PortraitDissolve'), { ssr: false });
 
-type Job = (typeof experience.work)[number];
+type Job = {
+  role: string;
+  org: string;
+  date: string;
+  line: string;
+  logo?: string;
+  badge?: string;
+  highlights?: string[];
+};
 
 function JobRow({ job }: { job: Job }) {
   return (
     <li className={s.job}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className={s.jobLogo} src={job.logo} alt="" loading="lazy" />
+      {job.logo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className={s.jobLogo} src={job.logo} alt="" loading="lazy" />
+      ) : (
+        <span className={`${s.jobLogo} ${s.jobBadge}`} aria-hidden>{job.badge}</span>
+      )}
       <div>
         <h4 className={s.jobRole}>{job.role}</h4>
         <p className={s.jobOrg}>
           {job.org} <span className={s.jobDate}>{job.date}</span>
         </p>
         <p className={s.jobLine}>{job.line}</p>
+        {job.highlights && (
+          <ul className={s.highlights}>
+            {job.highlights.map((h) => <li key={h}>{h}</li>)}
+          </ul>
+        )}
       </div>
     </li>
   );
@@ -235,10 +252,23 @@ export default function HomePage() {
             <div>
               <h3 className={s.expGroup}>Work</h3>
               <ul className={s.jobs}>{experience.work.map((j) => <JobRow key={j.role} job={j} />)}</ul>
+              <h3 className={`${s.expGroup} ${s.expGroupSpaced}`}>Education</h3>
+              <ul className={s.jobs}>
+                <JobRow
+                  job={{
+                    role: experience.education.school,
+                    org: experience.education.degree,
+                    date: experience.education.date,
+                    badge: experience.education.badge,
+                    line: experience.education.line,
+                  }}
+                />
+              </ul>
             </div>
             <div>
-              <h3 className={s.expGroup}>Community</h3>
+              <h3 className={s.expGroup}>Leadership and community</h3>
               <ul className={s.jobs}>{experience.community.map((j) => <JobRow key={j.role} job={j} />)}</ul>
+              <p className={s.earlier}>{experience.earlier}</p>
             </div>
           </div>
         </section>

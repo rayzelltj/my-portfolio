@@ -17,7 +17,7 @@ interface Project {
 // Impact metrics for MERvin (source: project_description_mervin_v2, Oct 2026)
 const metrics = [
   { value: "3–4h → 20–30m", label: "Per review" },
-  { value: "48", label: "Accountants" },
+  { value: "46", label: "Accountants" },
   { value: "270+", label: "Clients" },
   { value: "94% → ~1%", label: "Redundant OAuth calls" },
 ];

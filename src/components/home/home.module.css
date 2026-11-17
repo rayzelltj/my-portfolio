@@ -472,6 +472,46 @@
   object-fit: cover;
   background: #fff;
 }
+.jobBadge {
+  display: grid;
+  place-items: center;
+  background: #002145;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.highlights {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.highlights li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ice) 76%, transparent);
+}
+.highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 2px;
+  background: var(--accent);
+}
+.expGroupSpaced {
+  margin-top: 40px;
+}
+.earlier {
+  margin: 20px 0 0;
+  color: var(--silt);
+  font-size: 15px;
+}
 .jobRole {
   margin: 0;
   font-size: 19px;

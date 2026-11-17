@@ -17,12 +17,12 @@ export const mer = {
   title: 'MERvin',
   kind: 'Production AI agent, sole engineer',
   summary:
-    "An AI agent that runs the month-end review accountants do on every client's books. The AI reads the bank statements and working papers, and plain code decides each of 30+ checks. A pass only counts when two independent numbers agree to the cent.",
+    "An AI agent that runs the month-end review accountants do on every client's books. The AI reads the bank statements and working papers, and plain code decides each of 34 checks. A pass only counts when two independent numbers agree to the cent.",
   before: '3–4 hours',
   after: '20–30 minutes',
   facts: [
     { label: 'Time per review', value: '3–4 hours to 20–30 minutes' },
-    { label: 'Used every month by', value: '48 accountants' },
+    { label: 'Used every month by', value: '46 accountants' },
     { label: 'Accountant time freed', value: 'About 900 hours a month' },
   ],
   href: '/work/mer-agent',

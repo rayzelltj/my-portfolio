@@ -1,18 +1,15 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque } from 'next/font/google';
 import Glacier from './Glacier';
-
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin'],
-  axes: ['opsz', 'wdth'],
-  variable: '--font-display',
-});
+import '@fontsource-variable/bricolage-grotesque/standard.css'; // weight, width and optical-size axes
 
 export const metadata: Metadata = { title: 'Glacier | Design lab' };
 
+const fonts = { '--font-display': "'Bricolage Grotesque Variable', system-ui, sans-serif" } as CSSProperties;
+
 export default function Page() {
   return (
-    <div className={`lab-root ${bricolage.variable}`}>
+    <div className="lab-root" style={fonts}>
       <Glacier />
     </div>
   );

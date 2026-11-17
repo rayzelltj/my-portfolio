@@ -1,15 +1,20 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
-import { Instrument_Sans, Instrument_Serif } from 'next/font/google';
 import Signal from './Signal';
-
-const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-display' });
-const sans = Instrument_Sans({ subsets: ['latin'], variable: '--font-body' });
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource-variable/instrument-sans';
 
 export const metadata: Metadata = { title: 'Signal | Design lab' };
 
+const fonts = {
+  '--font-display': "'Instrument Serif', Georgia, serif",
+  '--font-body': "'Instrument Sans Variable', system-ui, sans-serif",
+} as CSSProperties;
+
 export default function Page() {
   return (
-    <div className={`lab-root ${serif.variable} ${sans.variable}`}>
+    <div className="lab-root" style={fonts}>
       <Signal />
     </div>
   );

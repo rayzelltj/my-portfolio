@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: 'MERvin case study | Rayzell Tjandra',
   description,
   openGraph: { type: 'article', title: 'MERvin case study', description },
+  alternates: { canonical: '/work/mer-agent' },
 };
 
 const fonts = { '--font-display': "'Archivo Variable'", '--font-body': "'Figtree Variable'" } as CSSProperties;

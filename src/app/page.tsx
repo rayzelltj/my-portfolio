@@ -1,8 +1,11 @@
 import type { CSSProperties } from 'react';
+import type { Metadata } from 'next';
 import HomePage from '@/components/home/HomePage';
 // Fonts are bundled (self-hosted) so builds never depend on reaching Google Fonts.
 import '@fontsource-variable/archivo/wdth.css'; // weight + width axes, for the condensed display type
 import '@fontsource-variable/figtree';
+
+export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 const fonts = {
   '--font-display': "'Archivo Variable'",

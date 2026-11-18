@@ -14,10 +14,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const description =
   'Software engineer studying Computer Science and Management at UBC. I build software people rely on, from first commit to production.';
 
-// Vercel sets this on every deploy, so link previews point at the live domain.
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : 'http://localhost:3000';
+// The one official address. Other Vercel aliases serve the same site, and
+// canonical tags plus link previews always point here.
+const siteUrl = 'https://rayzell.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

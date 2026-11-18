@@ -122,7 +122,10 @@ export default function HomePage() {
 
       // Project images ease in with a little parallax.
       gsap.utils.toArray<HTMLElement>(`.${s.projectMedia}`).forEach((el) => {
-        gsap.fromTo(el, { scale: 1.08 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
+        const scrollTrigger = { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true };
+        // Screenshots rise up through their frame; the stamp card zooms out.
+        if (el.classList.contains(s.projectShot)) gsap.fromTo(el, { yPercent: 10 }, { yPercent: -2, ease: 'none', scrollTrigger });
+        else gsap.fromTo(el, { scale: 1.08 }, { scale: 1, ease: 'none', scrollTrigger });
       });
     }, root);
     return () => ctx.revert();
@@ -231,7 +234,7 @@ export default function HomePage() {
                 <div className={s.projectFrame}>
                   {p.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img className={s.projectMedia} src={p.image} alt={`${p.title} screenshot`} loading="lazy" />
+                    <img className={`${s.projectMedia} ${s.projectShot}`} src={p.image} alt={`${p.title} screenshot`} loading="lazy" />
                   ) : (
                     <div className={`${s.projectMedia} ${s.projectStamp}`}>{p.stamp}</div>
                   )}

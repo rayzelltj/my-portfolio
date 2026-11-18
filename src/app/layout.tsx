@@ -11,9 +11,25 @@ import Footer from '@/components/Footer';
 import Providers from '@/components/Providers';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+const description =
+  'Software engineer studying Computer Science and Management at UBC. I build software people rely on, from first commit to production.';
+
+// Vercel sets this on every deploy, so link previews point at the live domain.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : 'http://localhost:3000';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Rayzell Tjandra | Portfolio',
-  description: 'Engineer building production AI systems with real, measurable impact.',
+  description,
+  openGraph: {
+    type: 'website',
+    siteName: 'Rayzell Tjandra',
+    title: 'Rayzell Tjandra',
+    description,
+  },
+  twitter: { card: 'summary_large_image', title: 'Rayzell Tjandra', description },
 };
 
 type RootLayoutProps = Readonly<{

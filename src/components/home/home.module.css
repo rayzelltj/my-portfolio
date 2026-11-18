@@ -397,6 +397,29 @@
 .project:hover .projectMedia {
   filter: brightness(1.08);
 }
+/* Screenshots sit like a window on a blue stage, so light UIs don't glare. */
+.projectFrame:has(.projectShot) {
+  position: relative;
+  background:
+    radial-gradient(80% 90% at 50% 110%, rgba(91, 140, 255, 0.35), transparent 70%),
+    linear-gradient(160deg, rgba(36, 80, 255, 0.28), var(--trench) 70%);
+}
+.projectMedia.projectShot {
+  position: absolute;
+  left: 8%;
+  top: 11%;
+  width: 84%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(227, 236, 255, 0.14);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.6);
+  filter: saturate(0.85) brightness(0.9);
+  transition: filter 0.4s, translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project:hover .projectMedia.projectShot {
+  filter: none;
+  translate: 0 -10px;
+}
 .projectStamp {
   display: grid;
   place-items: center;
